@@ -72,6 +72,40 @@ if ($CopyWorkflows -and (Test-Path $WorkflowTemplatePath)) {
     $FilesToCopy += $WfFiles
 }
 
+# 2b. Handle ACTIVATE_SHADOW.md Inheritance (Root-level file)
+$MotherActivatePath = Join-Path $MotherRoot "ACTIVATE_SHADOW.md"
+$SyncActivateShadow = ($Component -eq "All" -or $Component -eq "Identity") -and (Test-Path $MotherActivatePath)
+
+function Merge-ActivateShadow {
+    param (
+        [string]$MotherContent,
+        [string]$ChildContent
+    )
+    
+    # Extract child's Legion Context Block if exists
+    $ChildContextBlock = ""
+    $contextPattern = '(?s)(<!-- LEGION_CONTEXT_START -->.*?<!-- LEGION_CONTEXT_END -->)'
+    if ($ChildContent -match $contextPattern) {
+        $ChildContextBlock = $Matches[1]
+    }
+    
+    # If child has a context block, preserve it in mother's template
+    if ($ChildContextBlock -ne "") {
+        # Replace mother's empty context block with child's preserved block
+        $emptyBlockPattern = '<!-- LEGION_CONTEXT_START -->\s*<!-- LEGION_CONTEXT_END -->'
+        if ($MotherContent -match $emptyBlockPattern) {
+            return $MotherContent -replace $emptyBlockPattern, $ChildContextBlock
+        }
+        else {
+            # Mother doesn't have the block structure - inject after Node Context section
+            return $MotherContent
+        }
+    }
+    
+    # No child context to preserve, use mother's template as-is
+    return $MotherContent
+}
+
 # 3. Execution Loop
 $ItemsPushedList = @()
 
@@ -112,6 +146,27 @@ foreach ($child in $registry) {
         
         if ($ItemsPushedList -notcontains "$sourceType/$relativePath") {
             $ItemsPushedList += "$sourceType/$relativePath"
+        }
+    }
+
+    # A2. Sync ACTIVATE_SHADOW.md with Inheritance Merge
+    if ($SyncActivateShadow) {
+        $ChildActivatePath = Join-Path $child.path "ACTIVATE_SHADOW.md"
+        $MotherContent = Get-Content $MotherActivatePath -Raw -Encoding UTF8
+        
+        if (Test-Path $ChildActivatePath) {
+            $ChildContent = Get-Content $ChildActivatePath -Raw -Encoding UTF8
+            $MergedContent = Merge-ActivateShadow -MotherContent $MotherContent -ChildContent $ChildContent
+        }
+        else {
+            $MergedContent = $MotherContent
+        }
+        
+        Set-Content -Path $ChildActivatePath -Value $MergedContent -Encoding UTF8 -Force
+        Write-Host "      ✓ ACTIVATE_SHADOW.md synced (inherited)" -ForegroundColor DarkGreen
+        
+        if ($ItemsPushedList -notcontains "ACTIVATE_SHADOW.md") {
+            $ItemsPushedList += "ACTIVATE_SHADOW.md"
         }
     }
 

@@ -9,6 +9,9 @@
 - 若目录名为 `shadow-genesis` 或存在 `child_registry.json`：你是 **👑 母巢 (Mother Hive)**。
 - 若目录位于 `projects/` 下：你是 **⚔️ 子节点 (Legion Node)**。
 
+<!-- LEGION_CONTEXT_START -->
+<!-- LEGION_CONTEXT_END -->
+
 ---
 
 ### 1. 身份加载 (Identity Load)

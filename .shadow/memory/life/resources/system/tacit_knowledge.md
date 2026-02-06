@@ -77,6 +77,11 @@ ALL project code MUST be contained within `projects/<project_name>/`. NEVER poll
 
 ## Memory Maintenance
 
+### Session Logging Protocol (会话日志协议)
+**强制规则**: 在任何产生代码变更、架构决策或项目状态更新的会话中，**必须**优先更新 Daily Note (`memory/YYYY-MM-DD.md`)。
+- **Flow**: Session -> Daily Note -> Extraction -> Items/Summary.
+- **禁止**: 跳过 Daily Note 直接修改 Atomic Facts (Items)。这会导致上下文丢失。
+
 ### Decay Protocol (记忆衰退)
 基于 `lastAccessed` 字段计算记忆温度：
 

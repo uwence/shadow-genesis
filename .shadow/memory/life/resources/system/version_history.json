@@ -95,5 +95,20 @@
     ],
     "timestamp": "2026-02-06T19:36:03",
     "git_tag": "v0.3.0"
+  },
+  {
+    "version": "0.3.1",
+    "codename": "Synchrony",
+    "description": "Fixed Nurture not syncing root-level ACTIVATE_SHADOW.md to child nodes",
+    "features": [
+      "ACTIVATE_SHADOW.md Inheritance Merge in Nurture"
+    ],
+    "changes": [
+      "Added Merge-ActivateShadow function to distribute.ps1",
+      "Nurture now syncs ACTIVATE_SHADOW.md with Legion Context Block preservation",
+      "Synced all child nodes (Calculator, InduLog) to v0.3.0 protocol"
+    ],
+    "timestamp": "2026-02-06T20:17:41",
+    "git_tag": "v0.3.1"
   }
 ]

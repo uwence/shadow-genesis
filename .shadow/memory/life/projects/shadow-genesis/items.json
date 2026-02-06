@@ -61,5 +61,41 @@
         "lastAccessed": "2026-02-06T19:26:00+08:00",
         "supersededBy": null,
         "supersededAt": null
+    },
+    {
+        "id": "fact-008",
+        "fact": "v0.3.0 更新了 spawn.ps1，在 ACTIVATE_SHADOW.md 中注入 Legion Context Block",
+        "status": "active",
+        "createdAt": "2026-02-06T19:37:00+08:00",
+        "lastAccessed": "2026-02-06T19:37:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-009",
+        "fact": "v0.3.0 更新了 distribute.ps1，支持在同步时提取并保留子节点的 Legion Context Block",
+        "status": "active",
+        "createdAt": "2026-02-06T19:37:00+08:00",
+        "lastAccessed": "2026-02-06T19:37:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-010",
+        "fact": "母巢开发记忆 (projects/shadow-genesis) 被强制排除在 Spawn 和 Nurture 过程之外",
+        "status": "active",
+        "createdAt": "2026-02-06T19:37:00+08:00",
+        "lastAccessed": "2026-02-06T19:37:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-011",
+        "fact": "母巢本身必须严格遵循 P.A.R.A. 结构，作为 Shadow Genesis 项目进行管理",
+        "status": "active",
+        "createdAt": "2026-02-06T19:37:00+08:00",
+        "lastAccessed": "2026-02-06T19:37:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
     }
 ]
