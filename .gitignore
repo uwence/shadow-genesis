@@ -1,0 +1,19 @@
+# Systems
+node_modules/
+dist/
+build/
+.env
+.DS_Store
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor
+.vscode/
+.idea/
+
+# Shadow Specific
+.shadow/memory/life/archives/temp/
+backups/
