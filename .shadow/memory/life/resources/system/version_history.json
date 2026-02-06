@@ -65,5 +65,18 @@
                     ],
         "timestamp":  "2026-02-06T17:50:53",
         "git_tag":  "v0.2.2"
+    },
+    {
+        "version":  "0.2.3",
+        "codename":  "Self-Awareness",
+        "description":  "Implemented dual-identity activation protocol (Mother/Legion)",
+        "features":  [
+                         "Conditional Activation Logic"
+                     ],
+        "changes":  [
+                        "Rewrote ACTIVATE_SHADOW.md to support both Hive and Legion contexts"
+                    ],
+        "timestamp":  "2026-02-06T18:00:52",
+        "git_tag":  "v0.2.3"
     }
 ]
