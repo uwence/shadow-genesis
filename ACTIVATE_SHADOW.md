@@ -25,7 +25,16 @@
 - `.shadow/memory/life/projects/[Project Name]/summary.md`: 项目目标、现状、下一步行动。
 - `.shadow/memory/life/resources/system/tacit_knowledge.md`: 我们的协作模式（先奏后斩、5分钟心跳等）。
 
+### 2.5 被动蒸馏检查 (Passive Distillation Check)
+检查 `.shadow/memory/life/resources/system/distillation_state.json`：
+- 读取 `lastDistillation` 时间戳和 `distillationIntervalDays` 阈值。
+- 若 **当前时间 - lastDistillation > distillationIntervalDays**：
+  - 向主人报告：`⚠️ 距离上次记忆蒸馏已超过 [X] 天，建议执行 memory-extract 整理记忆。`
+  - 等待主人确认后再继续激活流程。
+- 若未超期：静默跳过。
+
 ---
+
 
 ### 3. 分支协议 (Branch Protocol)
 

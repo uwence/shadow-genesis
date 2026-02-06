@@ -110,5 +110,24 @@
     ],
     "timestamp": "2026-02-06T20:17:41",
     "git_tag": "v0.3.1"
+  },
+  {
+    "version": "0.4.0",
+    "codename": "Cognition",
+    "description": "Enhanced memory decay algorithm with dual-dimension scoring (Recency + Frequency)",
+    "features": [
+      "accessCount field in Atomic Fact schema",
+      "Frequency-weighted decay formula",
+      "Passive Distillation Check on activation"
+    ],
+    "changes": [
+      "Added accessCount field to Atomic Fact data structure",
+      "Upgraded temperature formula: effective_decay = max(0, time_decay - frequency_bonus)",
+      "Added distillation_state.json for tracking last distillation time",
+      "Added Section 2.5 (Passive Distillation Check) to ACTIVATE_SHADOW.md",
+      "Updated README_MEMORY.md and tacit_knowledge.md with new decay algorithm"
+    ],
+    "timestamp": "2026-02-07T00:22:00+08:00",
+    "git_tag": "v0.4.0"
   }
 ]

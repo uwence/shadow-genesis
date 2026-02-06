@@ -25,6 +25,7 @@
   "status": "superseded",
   "createdAt": "2026-01-15T10:00:00+08:00",
   "lastAccessed": "2026-02-01T14:30:00+08:00",
+  "accessCount": 3,
   "supersededBy": "fact-002",
   "supersededAt": "2026-02-05T09:00:00+08:00"
 }
@@ -34,6 +35,7 @@
   "status": "active",
   "createdAt": "2026-02-05T09:00:00+08:00",
   "lastAccessed": "2026-02-06T12:00:00+08:00",
+  "accessCount": 5,
   "supersededBy": null,
   "supersededAt": null
 }
@@ -83,15 +85,20 @@ ALL project code MUST be contained within `projects/<project_name>/`. NEVER poll
 - **禁止**: 跳过 Daily Note 直接修改 Atomic Facts (Items)。这会导致上下文丢失。
 
 ### Decay Protocol (记忆衰退)
-基于 `lastAccessed` 字段计算记忆温度：
+基于 `lastAccessed` 和 `accessCount` 双维度计算记忆温度：
 
-| 温度 | 时间范围 | 存储位置 | 操作 |
+**温度计算公式 (v0.4.0+)**:
+```
+时间衰减 = daysSinceLastAccess
+频率加成 = log2(accessCount + 1) * 3
+有效衰减 = max(0, 时间衰减 - 频率加成)
+```
+
+| 温度 | 有效衰减范围 | 存储位置 | 操作 |
 | :--- | :--- | :--- | :--- |
-| 🔥 **Hot** | < 7 天 | `summary.md` 顶部 | 优先展示 |
-| ♨️ **Warm** | 8-30 天 | `summary.md` 中部 | 背景信息 |
-| 🧊 **Cold** | > 30 天 | 仅存于 `items.json` | 从 `summary.md` 移除，归档至 `archives/` |
-
-**计算公式**: `温度 = 当前时间 - lastAccessed`
+| 🔥 **Hot** | < 7 | `summary.md` 顶部 | 优先展示 |
+| ♨️ **Warm** | 7-30 | `summary.md` 中部 | 背景信息 |
+| 🧊 **Cold** | > 30 | 仅存于 `items.json` | 从 `summary.md` 移除，归档至 `archives/` |
 
 ### Synthesis Protocol (记忆合成)
 **触发时机**: 每周或重大里程碑后。

@@ -59,6 +59,7 @@
   "status": "active | superseded",
   "createdAt": "2026-01-15T10:00:00+08:00",
   "lastAccessed": "2026-02-01T14:30:00+08:00",
+  "accessCount": 5,
   "supersededBy": null,
   "supersededAt": null
 }
@@ -72,21 +73,32 @@
 | `status` | enum | `active` (有效) 或 `superseded` (已过时) |
 | `createdAt` | ISO8601 | 创建时间 |
 | `lastAccessed` | ISO8601 | 最后访问时间 (用于计算温度) |
+| `accessCount` | integer | 访问次数 (用于计算重要性权重) |
 | `supersededBy` | string/null | 指向替代此事实的新事实 ID |
 | `supersededAt` | ISO8601/null | 被替代的时间 |
 
 **更新逻辑**: 如果事实发生变化，旧事实会被标记为 `superseded` 并通过 `supersededBy` 指向新事实。这保留了*变化的历史*。
 
 ### 📉 记忆衰退 (仿生相关性)
-并非所有事实都同等重要。系统根据 **近期性 (Recency)** 对信息进行优先级排序。
+并非所有事实都同等重要。系统根据 **近期性 (Recency)** 和 **访问频率 (Frequency)** 双维度对信息进行优先级排序。
 
-**计算基准**: `温度 = 当前时间 - lastAccessed` (基于最后访问时间，非创建时间)
+**温度计算公式 (v0.4.0+)**:
+```
+时间衰减 = daysSinceLastAccess
+频率加成 = log2(accessCount + 1) * 3  // 高频访问可抵消最多 ~15 天的时间衰减
+有效衰减 = max(0, 时间衰减 - 频率加成)
+```
 
-| 温度 | 时间范围 | 位置 | 操作 |
+**示例**: 一个 10 天未访问但被访问过 8 次的事实:
+- 时间衰减 = 10
+- 频率加成 = log2(9) * 3 ≈ 9.5
+- 有效衰减 = max(0, 10 - 9.5) = 0.5 → 仍为 🔥 Hot
+
+| 温度 | 有效衰减范围 | 位置 | 操作 |
 | :--- | :--- | :--- | :--- |
-| 🔥 **Hot** | < 7天 | `summary.md` 顶部 | 关键信息，优先展示 |
-| ♨️ **Warm** | 8-30天 | `summary.md` 中部 | 背景信息 |
-| 🧊 **Cold** | > 30天 | 仅 `items.json` | 从 `summary.md` 移除（安全保存在 JSON 中等待唤醒） |
+| 🔥 **Hot** | < 7 | `summary.md` 顶部 | 关键信息，优先展示 |
+| ♨️ **Warm** | 7-30 | `summary.md` 中部 | 背景信息 |
+| 🧊 **Cold** | > 30 | 仅 `items.json` | 从 `summary.md` 移除（安全保存在 JSON 中等待唤醒） |
 
 ---
 
