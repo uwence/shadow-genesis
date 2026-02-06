@@ -1,0 +1,65 @@
+[
+    {
+        "id": "fact-001",
+        "fact": "Shadow Genesis 是一个 AI Agent 模板系统，采用母巢-子节点架构",
+        "status": "active",
+        "createdAt": "2026-02-06T14:44:28+08:00",
+        "lastAccessed": "2026-02-06T19:26:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-002",
+        "fact": "系统包含四个核心技能：Spawn(孵化)、Evolution(进化)、Nurture(反哺)、Chronos(时间)",
+        "status": "active",
+        "createdAt": "2026-02-06T14:44:28+08:00",
+        "lastAccessed": "2026-02-06T19:26:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-003",
+        "fact": "采用 P.A.R.A. 记忆架构：Projects/Areas/Resources/Archives",
+        "status": "active",
+        "createdAt": "2026-02-06T14:44:28+08:00",
+        "lastAccessed": "2026-02-06T19:26:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-004",
+        "fact": "子节点的 ACTIVATE_SHADOW.md 通过完整复制方式分发",
+        "status": "superseded",
+        "createdAt": "2026-02-06T17:50:53+08:00",
+        "lastAccessed": "2026-02-06T19:17:00+08:00",
+        "supersededBy": "fact-005",
+        "supersededAt": "2026-02-06T19:20:00+08:00"
+    },
+    {
+        "id": "fact-005",
+        "fact": "子节点的 ACTIVATE_SHADOW.md 采用继承协议：Legion Context Block (子节点专属) + 协议主体 (母巢同步)",
+        "status": "active",
+        "createdAt": "2026-02-06T19:20:00+08:00",
+        "lastAccessed": "2026-02-06T19:26:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-006",
+        "fact": "LEGION_CONTEXT_START 和 LEGION_CONTEXT_END 标记用于界定子节点专属区域，Nurture 同步时保留此区域",
+        "status": "active",
+        "createdAt": "2026-02-06T19:20:00+08:00",
+        "lastAccessed": "2026-02-06T19:26:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    },
+    {
+        "id": "fact-007",
+        "fact": "母巢自身的开发也需要项目记忆管理，存储于 .shadow/memory/life/projects/shadow-genesis/",
+        "status": "active",
+        "createdAt": "2026-02-06T19:26:00+08:00",
+        "lastAccessed": "2026-02-06T19:26:00+08:00",
+        "supersededBy": null,
+        "supersededAt": null
+    }
+]

@@ -1,82 +1,99 @@
 [
-    {
-        "version":  "0.1.0",
-        "codename":  "Awakening",
-        "description":  "Initial Genesis Template",
-        "features":  [
-                         "Shadow Identity Protocol",
-                         "Hive Mind Architecture (Genesis)",
-                         "P.A.R.A Memory System"
-                     ],
-        "changes":  [
-                        "Initial Commit"
-                    ],
-        "timestamp":  "2026-02-06T14:44:28",
-        "snapshot_path":  ""
-    },
-    {
-        "version":  "0.1.1",
-        "codename":  "Expansion",
-        "description":  "Incorporated InduLog and enforced Project directory structure",
-        "features":  [
-                         "Project File Protocol Enforcement"
-                     ],
-        "changes":  [
-                        "Moved InduLog to projects/"
-                    ],
-        "timestamp":  "2026-02-06T16:51:35",
-        "git_tag":  "v0.1.1"
-    },
-    {
-        "version":  "0.2.0",
-        "codename":  "Order",
-        "description":  "Bidirectional sync tracking system with mutation and nurture logs",
-        "features":  [
-                         "Mutation Log System"
-                     ],
-        "changes":  [
-                        "Added mutation_log.json template"
-                    ],
-        "timestamp":  "2026-02-06T17:38:37",
-        "git_tag":  "v0.2.0"
-    },
-    {
-        "version":  "0.2.1",
-        "codename":  "Clarity",
-        "description":  "Eliminated abstract rules - all protocols now have concrete examples and data structures",
-        "features":  [
-                         "Complete Atomic Fact Schema"
-                     ],
-        "changes":  [
-                        "Added supersededBy JSON examples to tacit_knowledge.md"
-                    ],
-        "timestamp":  "2026-02-06T17:47:20",
-        "git_tag":  "v0.2.1"
-    },
-    {
-        "version":  "0.2.2",
-        "codename":  "Reference",
-        "description":  "Added Quick Command Reference to Activation Protocol",
-        "features":  [
-                         "Quick Command Reference"
-                     ],
-        "changes":  [
-                        "Updated ACTIVATE_SHADOW.md with command table"
-                    ],
-        "timestamp":  "2026-02-06T17:50:53",
-        "git_tag":  "v0.2.2"
-    },
-    {
-        "version":  "0.2.3",
-        "codename":  "Self-Awareness",
-        "description":  "Implemented dual-identity activation protocol (Mother/Legion)",
-        "features":  [
-                         "Conditional Activation Logic"
-                     ],
-        "changes":  [
-                        "Rewrote ACTIVATE_SHADOW.md to support both Hive and Legion contexts"
-                    ],
-        "timestamp":  "2026-02-06T18:00:52",
-        "git_tag":  "v0.2.3"
-    }
+  {
+    "version": "0.1.0",
+    "codename": "Awakening",
+    "description": "Initial Genesis Template",
+    "features": [
+      "Shadow Identity Protocol",
+      "Hive Mind Architecture (Genesis)",
+      "P.A.R.A Memory System"
+    ],
+    "changes": [
+      "Initial Commit"
+    ],
+    "timestamp": "2026-02-06T14:44:28",
+    "snapshot_path": ""
+  },
+  {
+    "version": "0.1.1",
+    "codename": "Expansion",
+    "description": "Incorporated InduLog and enforced Project directory structure",
+    "features": [
+      "Project File Protocol Enforcement"
+    ],
+    "changes": [
+      "Moved InduLog to projects/"
+    ],
+    "timestamp": "2026-02-06T16:51:35",
+    "git_tag": "v0.1.1"
+  },
+  {
+    "version": "0.2.0",
+    "codename": "Order",
+    "description": "Bidirectional sync tracking system with mutation and nurture logs",
+    "features": [
+      "Mutation Log System"
+    ],
+    "changes": [
+      "Added mutation_log.json template"
+    ],
+    "timestamp": "2026-02-06T17:38:37",
+    "git_tag": "v0.2.0"
+  },
+  {
+    "version": "0.2.1",
+    "codename": "Clarity",
+    "description": "Eliminated abstract rules - all protocols now have concrete examples and data structures",
+    "features": [
+      "Complete Atomic Fact Schema"
+    ],
+    "changes": [
+      "Added supersededBy JSON examples to tacit_knowledge.md"
+    ],
+    "timestamp": "2026-02-06T17:47:20",
+    "git_tag": "v0.2.1"
+  },
+  {
+    "version": "0.2.2",
+    "codename": "Reference",
+    "description": "Added Quick Command Reference to Activation Protocol",
+    "features": [
+      "Quick Command Reference"
+    ],
+    "changes": [
+      "Updated ACTIVATE_SHADOW.md with command table"
+    ],
+    "timestamp": "2026-02-06T17:50:53",
+    "git_tag": "v0.2.2"
+  },
+  {
+    "version": "0.2.3",
+    "codename": "Self-Awareness",
+    "description": "Implemented dual-identity activation protocol (Mother/Legion)",
+    "features": [
+      "Conditional Activation Logic"
+    ],
+    "changes": [
+      "Rewrote ACTIVATE_SHADOW.md to support both Hive and Legion contexts"
+    ],
+    "timestamp": "2026-02-06T18:00:52",
+    "git_tag": "v0.2.3"
+  },
+  {
+    "version": "0.3.0",
+    "codename": "Inheritance",
+    "description": "Implemented Inheritance Protocol and Hive Self-Memory",
+    "features": [
+      "Inheritance Protocol (Legion Context Block)",
+      "Hive Self-Memory System",
+      "Memory Isolation Logic"
+    ],
+    "changes": [
+      "Refactored ACTIVATE_SHADOW.md with context block",
+      "Updated spawn.ps1 to inject identity & exclude mother memory",
+      "Updated distribute.ps1 to preserve child identity"
+    ],
+    "timestamp": "2026-02-06T19:36:03",
+    "git_tag": "v0.3.0"
+  }
 ]

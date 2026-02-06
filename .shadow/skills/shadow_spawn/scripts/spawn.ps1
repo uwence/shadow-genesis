@@ -40,11 +40,18 @@ if (-not (Test-Path $ChildShadowDir)) {
 Write-Host "🧬 Replicating DNA (Files)..." -ForegroundColor Gray
 # Exclude the 'child_registry.json' itself from the child (Children shouldn't know about siblings initially)
 # And maybe exclude backups
-$ExcludeFiles = @("child_registry.json")
+# Exclude Mother-specific files from child nodes
+$ExcludeFiles = @("child_registry.json", "nurture_history.json", "assimilation_history.json")
+# Exclude Mother's own development memory (shadow-genesis project)
+$ExcludeDirectories = @("projects\\shadow-genesis")
 
 Get-ChildItem -Path $ShadowTemplatePath -Recurse | ForEach-Object {
     if ($ExcludeFiles -contains $_.Name) { return }
     if ($_.FullName -match "backups\\") { return }
+    # Skip Mother's development memory
+    foreach ($excludeDir in $ExcludeDirectories) {
+        if ($_.FullName -match $excludeDir) { return }
+    }
     
     $relativePath = $_.FullName.Substring($ShadowTemplatePath.Length).TrimStart("\")
     $targetPath = Join-Path $ChildShadowDir $relativePath
@@ -71,16 +78,32 @@ Get-ChildItem -Path $ShadowTemplatePath -Recurse | ForEach-Object {
     }
 }
 
-# 4. Copy Root Files (ACTIVATE_SHADOW.md)
+# 4. Copy Root Files (ACTIVATE_SHADOW.md) with Legion Context Injection
 $ActivateSrc = Join-Path $MotherRoot "ACTIVATE_SHADOW.md"
 $ActivateDest = Join-Path $TargetDirectory "ACTIVATE_SHADOW.md"
 if (Test-Path $ActivateSrc) {
-    Copy-Item -Path $ActivateSrc -Destination $ActivateDest -Force
-    $content = Get-Content $ActivateDest -Raw
+    $content = Get-Content $ActivateSrc -Raw
     $content = $content.Replace("[Project Name]", $ProjectName)
-    # Remove Mother-Specific sections from Child if needed, or keep for potential future Mother-capability
-    # ideally we strip the "Mother Evolution" parts if this is a child, but for now we leave it latent.
-    Set-Content -Path $ActivateDest -Value $content
+    
+    # Inject Legion Context Block
+    $spawnTimestamp = (Get-Date).ToString("yyyy-MM-ddTHH:mm:sszzz")
+    $legionContext = @"
+## ⚔️ 子节点身份 (Legion Identity)
+| 属性 | 值 |
+| :--- | :--- |
+| **节点名称** | $ProjectName |
+| **项目路径** | $TargetDirectory |
+| **孵化时间** | $spawnTimestamp |
+| **母巢位置** | $MotherRoot |
+
+> *此节点为 Shadow Genesis 的子嗣，专注于 $ProjectName 项目的开发。*
+"@
+    
+    # Replace the empty Legion Context Block with filled content
+    $content = $content -replace '(?s)<!-- LEGION_CONTEXT_START -->.*?<!-- LEGION_CONTEXT_END -->', "<!-- LEGION_CONTEXT_START -->`n$legionContext`n<!-- LEGION_CONTEXT_END -->"
+    
+    Set-Content -Path $ActivateDest -Value $content -Encoding UTF8
+    Write-Host "   ⚔️ Legion Context Injected" -ForegroundColor DarkYellow
 }
 
 # 5. Handle Project Summary Rename
