@@ -26,5 +26,18 @@
                     ],
         "timestamp":  "2026-02-06T16:51:35",
         "git_tag":  "v0.1.1"
+    },
+    {
+        "version":  "0.2.0",
+        "codename":  "Order",
+        "description":  "Bidirectional sync tracking system with mutation and nurture logs",
+        "features":  [
+                         "Mutation Log System"
+                     ],
+        "changes":  [
+                        "Added mutation_log.json template"
+                    ],
+        "timestamp":  "2026-02-06T17:38:37",
+        "git_tag":  "v0.2.0"
     }
 ]

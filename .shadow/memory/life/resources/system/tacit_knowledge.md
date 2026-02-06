@@ -17,6 +17,32 @@
 - **Silence**: Default to NO_REPLY in group settings or when nothing is needed.
 - **Encoding**: Force UTF-8 for all interactions.
 - **Project Isolation**: ALL project code MUST be contained within `projects/<project_name>/`. NEVER pollute the root directory.
+  
+  **📐 正确的节点目录结构 (Canonical Node Structure):**
+  ```
+  <NodeName>/                <-- Agent 节点根目录 (MUST remain clean)
+  ├── ACTIVATE_SHADOW.md     <-- 唯一允许在根目录的文件
+  ├── .shadow/               <-- 幽影系统 (身份/记忆/技能)
+  │   ├── IDENTITY.md
+  │   ├── USER.md
+  │   ├── README_MEMORY.md
+  │   ├── memory/
+  │   └── skills/
+  └── projects/
+      └── <ProjectName>/     <-- **所有项目代码必须在此目录内**
+          ├── src/
+          ├── public/
+          ├── config/
+          ├── database/
+          ├── tools/
+          ├── node_modules/
+          ├── package.json
+          ├── .git/
+          ├── .gitignore
+          └── ...
+  ```
+  
+  **❌ 绝对禁止**: 在节点根目录放置 `src/`, `package.json`, `config/`, 等项目文件。
 
 ## Memory Maintenance
 - **Decay**: Old memories move to `.shadow/memory/life/archives`.

@@ -1,0 +1,11 @@
+[
+    {
+        "id": "mut-template",
+        "timestamp": "YYYY-MM-DDTHH:MM:SS+08:00",
+        "type": "new_skill | tacit_knowledge_update | new_workflow | script_improvement",
+        "file": "relative/path/to/changed/file",
+        "description": "Human-readable description of the mutation",
+        "priority": "high | medium | low",
+        "status": "pending_review | assimilated | rejected"
+    }
+]

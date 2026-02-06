@@ -1,0 +1,11 @@
+[
+    {
+        "id": "nur-template",
+        "timestamp": "YYYY-MM-DDTHH:MM:SS+08:00",
+        "source": "shadow-genesis@VERSION",
+        "items": [
+            "list/of/files/received.md"
+        ],
+        "description": "Human-readable description of what was received from mother hive"
+    }
+]
