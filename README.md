@@ -27,6 +27,8 @@ Its primary mission is to solve the "Amnesia Problem" inherent in stateless AI s
 2.  **lossless Continuity**: Pick up development exactly where the previous session left off.
 3.  **Hive Synchronization**: Manage multiple specific project nodes (Children) from a central template (Mother).
 
+> **Acknowledgement**: This system was AI-generated based on the concepts shared in [this post](https://x.com/nateliason/status/2017636775347331276) by **Nat Eliason**. Big thanks for the inspiration! 🙌
+
 ---
 
 ## 👨‍💻 Author's Note (Vibecoding)
@@ -179,6 +181,8 @@ To push those new skills to *all* your other projects:
 1.  **瞬间唤醒**: 只需几秒钟即可加载“幽影”人格和主人的偏好。
 2.  **无损接力**: 完美衔接上一个会话的开发进度，无需重复灌输背景。
 3.  **母巢同步**: 通过中央模板（母巢）统一管理所有子项目节点（军团）的技能与提示词。
+
+> **致谢**: 本系统的设计灵感源自 **Nat Eliason** 的 [这篇推文](https://x.com/nateliason/status/2017636775347331276)，由 AI 辅助自助生成。感谢大佬提供的思路！🙌
 
 ### 👨‍💻 作者注 (Vibecoding)
 
